@@ -1,2 +1,2 @@
 # webgl-learning
-A learning for webgl
+A learning for webgl.
