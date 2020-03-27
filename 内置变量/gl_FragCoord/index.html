@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="webgl" width="500" height="500" style="background-color: blue"></canvas>
+  <script id="vertexShader" type="x-shader/x-vertex">
+    void main() {
+      gl_PointSize = 400.0;
+      gl_Position = vec4(0.0, 0.0, 0.0, 1.0);
+    }
+  </script>
+  <script id="fragmentShader" type="x-shader/x-fragment">
+    void main() {
+      // 根据片元的x坐标，来设置片元的像素值
+      // if(gl_FragCoord.x < 100.0){
+        // canvas画布上[0,300)之间片元像素值设置
+      //  gl_FragColor = vec4(1.0,0.0,0.0,1.0);
+      // }else if (gl_FragCoord.x <= 200.0) {
+        // canvas画布上(300,400]之间片元像素值设置
+      //  gl_FragColor = vec4(0.0,1.0,0.0,1.0);
+      // } else if (gl_FragCoord.x <= 300.0) {
+      //  gl_FragColor = vec4(1.0,1.0,1.0,1.0);
+      // } else {
+        // canvas画布上(400,500]之间片元像素值设置
+      //  gl_FragColor = vec4(0.0,1.0,1.0,1.0);
+      // }    
+      gl_FragColor = vec4(gl_FragCoord.x/400.0*1.0,1.0,0.0,1.0);
+      // 所有片元设置为红色
+      // gl_FragColor = vec4(1.0,0.0,0.0,1.0);
+    }
+  </script>
+  <script src="./index.js"></script>
+</body>
+
+</html>

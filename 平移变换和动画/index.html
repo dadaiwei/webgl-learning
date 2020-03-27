@@ -10,14 +10,15 @@
 <body>
   <canvas id="webgl" width="500" height="500" style="background-color: blue"></canvas>
   <script id="vertexShader" type="x-shader/x-vertex">
+    // attribute声明vec4类型变量apos
+    attribute vec4 apos;
     void main() {
-      gl_PointSize = 100.0;
-      gl_Position = vec4(0.0, 0.0, 0.0, 1.0);
+      gl_Position = apos;
     }
   </script>
   <script id="fragmentShader" type="x-shader/x-fragment">
     void main() {
-      gl_FragColor = vec4(0.0, 1.0, 0.0, 1.0);
+      gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
     }
   </script>
   <script src="./index.js"></script>

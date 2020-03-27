@@ -10,30 +10,8 @@ const vertexShaderSource = document.getElementById('vertexShader').innerText;
 const fragShaderSource = document.getElementById('fragmentShader').innerText;
 
 var program = initShader(gl, vertexShaderSource, fragShaderSource);
+gl.drawArrays(gl.POINTS, 0, 1);
 
-// 获取顶点着色器的位置变量apos，即aposLocation指向apos变量。
-const aposLocation = gl.getAttribLocation(program, 'apos');
-
-// 矩形四个顶点坐标的数据
-const data = new Float32Array([0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5]);
-
-// 创建缓冲区对象
-const buffer = gl.createBuffer();
-
-// 绑定缓冲区对象，激活buffer
-gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-
-// 顶点数据传入缓冲区
-gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
-
-// 缓冲区中的数据按照一定的规律传递给变量apos
-gl.vertexAttribPointer(aposLocation, 2, gl.FLOAT, false, 0, 0);
-
-// 允许数据传递
-gl.enableVertexAttribArray(aposLocation);
-
-// 开始绘制图形
-gl.drawArrays(gl.POINTS, 0, 4);
 
 function initShader(gl, vertexShaderSource, fragementShaderSource) {
   // 创建顶点着色器对象
