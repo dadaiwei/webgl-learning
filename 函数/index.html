@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="webgl" width="500" height="500" style="background-color: blue"></canvas>
+  <script id="vertexShader" type="x-shader/x-vertex">
+    // 使用out关键字声明dir参数
+    float fun(out vec3 dir){
+      // 如果使用了out关键字，改变dir的值，dir对应的外部变量direc会被修改
+      dir.x = 100.0;
+      return dir.x*dir.x;
+    }
+    vec3 direc = vec3(1.0,0.0,0.0);
+    void main() {
+      fun(direc);
+      // 通过WebGL点渲染验证direc变量是否被fun函数改变
+      gl_PointSize=50;
+      gl_Position =vec4(0.0,0.0,0.0,1.0);
+    }
+  </script>
+  <script id="fragmentShader" type="x-shader/x-fragment">
+    void main() {
+      gl_FragColor = vec4(0.0, 1.0, 0.0, 1.0);
+    }
+  </script>
+  <script src="./index.js"></script>
+</body>
+
+</html>
